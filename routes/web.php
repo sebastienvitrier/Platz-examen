@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts.index',['posts' => \App\Models\Post::orderBy('created_at', 'desc')]);
+    return view('posts.index',['posts' => \App\Models\Post::all()]);
 })->name('post.index');
 
 
