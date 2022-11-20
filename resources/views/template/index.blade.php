@@ -8,7 +8,7 @@
 @include('template.partials._navbar')
 @include('template.partials._filter')
 
- @yield('content')
+@yield('content')
 
 @include('template.partials._footer')
 @include('template.partials._scripts')

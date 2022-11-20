@@ -1,5 +1,8 @@
-<!-- PORTFOLIO -->
+@extends('template.index')
 
+
+@section('content')
+    
 <div id="wrapper-container">
 
     <div class="container object">
@@ -293,3 +296,4 @@
             </div>
 
         </div>
+        @endsection
