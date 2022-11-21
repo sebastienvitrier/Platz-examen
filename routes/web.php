@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts.index',['posts' => \App\Models\Post::all()]);
+    return view('posts.index',['posts' => \App\Models\Post::paginate(12)]);
 })->name('post.index');
+
+Route::get('posts/{post}', function (\App\Models\Post $post) {
+    return view('posts.show', compact('post'));
+})->name('posts.show');
 
 
 Route::group(['prefix' => 'admin'], function () {
