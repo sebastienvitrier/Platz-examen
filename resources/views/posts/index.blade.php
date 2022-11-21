@@ -21,7 +21,7 @@
                             </dl>
                         </a>
                         <div id="wrapper-part-info">
-                            <div class="part-info-image"><img src={{$post->Category}} alt="" width="28" height="28"/></div>
+                            <div class="part-info-image"><img src={{$post->Category->image}} alt="" width="28" height="28"/></div>
                             <div id="part-info">{{$post->title}}</div>
                         </div>
                     </figure>
@@ -32,7 +32,6 @@
 
             </div>
 
-             
             {{ $posts->links() }}
 
         </div>

@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('post.index');
 
 Route::get('posts/{post}', function (\App\Models\Post $post) {
-    return view('posts.show', compact('post'));
+    return view('postsDetails.index', compact('post'));
 })->name('posts.show');
 
 
