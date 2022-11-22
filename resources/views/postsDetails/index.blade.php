@@ -44,7 +44,7 @@
 
                 <div class="wrapper-download">
                     <div class="icon-download"><img src="{{asset('img/icon-download.svg')}}" alt="" width="19" height="26"/></div>
-                    <div class="text-download"><a href="#"><b>Download</b></a></div>
+                    <div class="text-download"><a href="{{asset('download/download_laravel.pdf')}}"><b>Download</b></a></div>
                 </div>
 
                 <div class="wrapper-morefrom">
@@ -64,15 +64,10 @@
                             <hr/><h2>Your comments</h2>
                         </div>
 
-
-                </div>
-                @foreach ($comment as $comments)
-                <div class="post-reply">
-                    <div class="image-reply-post"></div>
-                    <div class="name-reply-post"></div>
-                    <div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
-                </div>
-                @endforeach
+                        <div>
+             @include('postsDetails._comments', ['comments' => \App\Models\Comment::take(3)->orderBy('created_at', 'DESC')->get()
+             ])
+             </div>
 
 
                 <div class="post-send">

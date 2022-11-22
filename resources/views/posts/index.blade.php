@@ -13,7 +13,7 @@
                 <section class="work">
                     @foreach ($posts as $post)
                     <figure class="white">
-                        <a href="{{route('posts.show', ['post' => $post->id])}}">
+                        <a href="{{route('postsDetails.index', ['post' => $post->id])}}">
                             <img src={{$post->image}} alt="" />
                             <dl>
                                 <dt>{{$post->title}}</dt>

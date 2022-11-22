@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('posts.index',['posts' => \App\Models\Post::paginate(12)]);
 })->name('post.index');
 
-Route::get('posts/{post}', function (\App\Models\Post $post, \App\Models\Comment $comment) {
-    return view('postsDetails.index', compact('post'), compact('comment'));
-})->name('posts.show');
+Route::get('posts/{post}', function (\App\Models\Post $post) {
+    return view('postsDetails.index', compact('post'));
+})->name('postsDetails.index');
 
 
 Route::group(['prefix' => 'admin'], function () {
