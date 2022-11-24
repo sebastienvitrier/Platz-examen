@@ -47,14 +47,19 @@
                     <div class="text-download"><a href="{{asset('download/download_laravel.pdf')}}"><b>Download</b></a></div>
                 </div>
 
+                
+                <!-- code qui permet d'afficher des posts aléatoires de la même catégorie mais différent de l'actuel -->
                 <div class="wrapper-morefrom">
                     <div class="text-morefrom">More from .psd</div>
-                    <div class="image-morefrom">
-                        <a href="#"><div class="image-morefrom-1"><img src="{{asset('img/' . $post->image)}}" alt="" width="430" height="330"/></div></a>
-                        <a href="#"><div class="image-morefrom-2"><img src="{{asset('img/' . $post->image)}}" height="330"/></div></a>
-                        <a href="#"><div class="image-morefrom-3"><img src="{{asset('img/' . $post->image)}}" height="330"/></div></a>
-                        <a href="#"><div class="image-morefrom-4"><img src="{{asset('img/' . $post->image)}}" height="330"/></div></a>
-                    </div>
+                    <?php $recent_post = $post->category_id; ?>
+                    <?php $post_recent = $post->id; ?>
+                        @include('posts._recent', 
+                        ['post' => \App\Models\Post::where(function ($query) use ($recent_post, $post_recent) 
+                        {
+                        $query->where('category_id', '=', $recent_post)->where('id', '!=', $post_recent);
+                        })->orderBy(DB::raw('RAND()'))->take(4)->get()
+                        ])
+
                 </div>
 
             </div>
@@ -65,6 +70,7 @@
                         </div>
 
                         <div>
+             <!-- include pour afficher les commentaires -->               
              @include('postsDetails._comments', ['comments' => \App\Models\Comment::take(3)->orderBy('created_at', 'DESC')->get()
              ])
              </div>
