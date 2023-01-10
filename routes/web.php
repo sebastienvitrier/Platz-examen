@@ -21,7 +21,13 @@ Route::get('posts/{post}', function (\App\Models\Post $post) {
     return view('postsDetails.index', compact('post'));
 })->name('postsDetails.index');
 
+// Route pour les catégories
+Route::get('/categories/{category}', function (\App\Models\Category $category) {
 
+    return view('categories.show', compact('category'));
+})->name('categories.show');
+
+// Route voyager
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
